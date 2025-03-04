@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.BIND_DEVICE_ADMIN"/>
+    <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS"/>
     <application
             android:allowBackup="true"
             android:dataExtractionRules="@xml/data_extraction_rules"
@@ -21,6 +23,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+                android:name="com.online.mdmdemo.AdminSettings.MyDeviceAdminReceiver"
+                android:exported="true"
+                android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                    android:name="android.app.device_admin"
+                    android:resource="@xml/device_admin" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

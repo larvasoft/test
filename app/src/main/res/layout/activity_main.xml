@@ -7,4 +7,16 @@
         android:gravity="center"
         android:padding="20dp">
 
+    <Button
+            android:id="@+id/btnActivate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activate Device Admin" />
+
+    <Button
+            android:id="@+id/btnDeactivate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deactivate Device Admin"
+            android:layout_marginTop="20dp" />
 </LinearLayout>

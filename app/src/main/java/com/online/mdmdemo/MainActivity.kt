@@ -1,13 +1,16 @@
 package com.online.mdmdemo
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.online.mdmdemo.AdminSettings.DeviceAdminHelper
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var deviceAdminHelper: DeviceAdminHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,6 +19,15 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        deviceAdminHelper = DeviceAdminHelper(this)
+
+        findViewById<Button>(R.id.btnActivate).setOnClickListener {
+            deviceAdminHelper.activateAdmin()
+        }
+
+        findViewById<Button>(R.id.btnDeactivate).setOnClickListener {
+            deviceAdminHelper.deactivateAdmin()
         }
     }
 }
